@@ -18,9 +18,11 @@ public class playerCrystalManager : MonoBehaviour
     
     private GameObject closestCrystal;
     private MultiInputSystem inputSystem;
+    private MinerGame minerGame;
     private void Start()
     {
         this.inputSystem = GetComponent<MultiInputSystem>();
+        this.minerGame = GetComponent<MinerGame>();
     }
 
     private void OnInteract(InputValue value)
@@ -120,6 +122,7 @@ public class playerCrystalManager : MonoBehaviour
     {
         this.inputSystem.disableMovement();
         this.isMining = true;
+        minerGame.startGame();
     }
     public void stopMining()
     {
