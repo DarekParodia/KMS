@@ -210,6 +210,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointer: {fileID: 4566314871657341124}
   minPointerDistance: 2.52
+  rotationSmoothness: 2.33
   isMining: 0
 --- !u!114 &3031320174272134335
 MonoBehaviour:

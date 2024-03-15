@@ -31,7 +31,7 @@ public class NewBehaviourScript : MonoBehaviour
             }
             else
             {
-                pointer.transform.rotation = Quaternion.Slerp(pointer.transform.rotation, Quaternion.Euler(0, 0, getClosestCrystalAngle()), rotationSmoothness * Time.deltaTime);
+                pointer.transform.rotation = Quaternion.Slerp(pointer.transform.rotation, Quaternion.Euler(0, 0, getClosestCrystalAngle() - 90.0f), rotationSmoothness * Time.deltaTime);
                 pointer.SetActive(true);
             }
         }
