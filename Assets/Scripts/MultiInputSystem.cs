@@ -55,5 +55,6 @@ public class MultiInputSystem : MonoBehaviour
     public void disableMovement()
     {
         _isMovementEnabled = false;
+        _rigidbody.velocity = Vector2.zero;
     }
 }
