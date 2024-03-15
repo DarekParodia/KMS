@@ -1,38 +1,76 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.TextCore.Text;
 using UnityEngine;
+using UnityEngine.Serialization;
+using UnityEngine.InputSystem;
 
-public class NewBehaviourScript : MonoBehaviour
+public class playerCrystalManager : MonoBehaviour
 {
-    [SerializeField]private GameObject pointer;
+    [SerializeField] private GameObject pointer;
+    [SerializeField] private GameObject mineText;
     [SerializeField] private float minPointerDistance = 2.0f;
     [SerializeField] private float rotationSmoothness = 2.0f;
-    [SerializeField]private bool isMining = false;
+    [SerializeField] private bool isMining = false;
+    [SerializeField] private bool isCloseEnough = false;
     
-    private MultiInputSystem multiInputSystem;
     
     private GameObject closestCrystal;
-    void Start()
+    private MultiInputSystem inputSystem;
+    private void Start()
     {
-        this.multiInputSystem = GetComponent<MultiInputSystem>();
+        this.inputSystem = GetComponent<MultiInputSystem>();
     }
 
+    private void OnInteract(InputValue value)
+    {
+        Debug.Log("Interact");
+        if (this.isCloseEnough)
+        {
+            this.startMining();
+        }
+    }
+    private void OnUnInteract(InputValue value)
+    {
+        Debug.Log("Uninteract");
+        if (this.isMining)
+        {
+            this.stopMining();
+        }
+    }
     // Update is called once per frame
     void FixedUpdate()
     {
+        if(!isMining)
         this.closestCrystal = getClosestCrystal();
         if (this.closestCrystal != null)
         {
             // if crystal is close enough, hide pointer
             if (getClosestCrystalDistance() < minPointerDistance)
             {
+                // jak blisko krysztal
                 pointer.SetActive(false);
+                isCloseEnough = true;
+                
+                // wylaczanie tekstu
+                if (isMining)
+                {
+                    mineText.SetActive(false);
+                }
+                else
+                {
+                    mineText.SetActive(true);
+                }
+                
             }
             else
             {
+                // jak krysztal daleko
                 pointer.transform.rotation = Quaternion.Slerp(pointer.transform.rotation, Quaternion.Euler(0, 0, getClosestCrystalAngle() - 90.0f), rotationSmoothness * Time.deltaTime);
                 pointer.SetActive(true);
+                isCloseEnough = false;
+                mineText.SetActive(false);
             }
         }
         else
@@ -80,10 +118,12 @@ public class NewBehaviourScript : MonoBehaviour
     
     public void startMining()
     {
+        this.inputSystem.disableMovement();
         this.isMining = true;
     }
     public void stopMining()
     {
+        this.inputSystem.enableMovement();
         this.isMining = false;
     }
 }
