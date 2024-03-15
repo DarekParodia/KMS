@@ -243,8 +243,8 @@ MonoBehaviour:
   currentSize: 3
   changeThreshold: 2.85
   changeTresholdLeap: 0.31
-  moveSmoothness: 2
-  zoomSmoothness: 0.8
+  moveSmoothness: 2.32
+  zoomSmoothness: 1.37
   zoomOutSmoothness: 0.85
   player1: {fileID: 2144117}
   player2: {fileID: 491841939}
