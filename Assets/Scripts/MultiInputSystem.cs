@@ -10,6 +10,7 @@ public class MultiInputSystem : MonoBehaviour
     [SerializeField] private float _moveSpeed = 5.0f; 
     [SerializeField] public int LastDirection = 0;
     [SerializeField] private bool _isMoving = false;
+    [SerializeField] private bool _isMovementEnabled = true;
     private Rigidbody2D _rigidbody;
     private Vector2 _movementInput;
     
@@ -21,6 +22,7 @@ public class MultiInputSystem : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!_isMovementEnabled) return;
         _rigidbody.velocity = _movementInput * _moveSpeed;
         LastDirection = GetDirection(_movementInput);
     }
@@ -44,5 +46,14 @@ public class MultiInputSystem : MonoBehaviour
     public bool IsMoving()
     {
         return _isMoving;
+    }
+    
+    public void enableMovement()
+    {
+        _isMovementEnabled = true;
+    }
+    public void disableMovement()
+    {
+        _isMovementEnabled = false;
     }
 }
