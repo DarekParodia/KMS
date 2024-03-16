@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using NaughtyAttributes;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -21,6 +22,9 @@ public class Player : MonoBehaviour
     [SerializeField] private Timer timer;
     [SerializeField] private GameObject circle;
     [SerializeField] private AudioSource shootSound;
+    [SerializeField] private GameObject ui;
+    [SerializeField] private GameObject endScreen;
+    [SerializeField] private TextMeshProUGUI scoreText;
     
     PlayerInput playerInput;
     private Vector2 look;
@@ -72,6 +76,14 @@ public class Player : MonoBehaviour
                 this.gun.SetActive(true);
             }
      }
+
+    void playerDead()
+    {
+        ui.SetActive(false);
+        endScreen.SetActive(true);
+        scoreText.text = timer.getTotalTime().ToString("F2");
+        Time.timeScale = 0;
+    }
 
     
      void OnLook(InputValue value)
@@ -140,6 +152,7 @@ public class Player : MonoBehaviour
          if (this.currentHP <= 0)
          {
              Destroy(gameObject);
+             this.playerDead();
          }
          invincibilityForSeconds(0.3f);
      }

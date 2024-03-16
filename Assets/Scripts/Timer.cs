@@ -13,6 +13,7 @@ public class Timer : MonoBehaviour
     [SerializeField] private TextMeshProUGUI timeText;
     [SerializeField] private Slider timeSlider;
     [SerializeField] private float timeToAdd = 10.0f;
+    private float totalTime = 0.0f;
     void Start()
     {
         
@@ -40,6 +41,7 @@ public class Timer : MonoBehaviour
     public void addTime()
     {
         time += timeToAdd;
+        totalTime += timeToAdd;
         time = Mathf.Clamp(time, 0, maxtime);
     }
     public void pauseTimer()
@@ -49,5 +51,10 @@ public class Timer : MonoBehaviour
     public void resumeTimer()
     {
         isTimerPaused = false;
+    }
+
+    public float getTotalTime()
+    {
+        return this.totalTime;
     }
 }
