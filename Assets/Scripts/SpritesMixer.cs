@@ -9,8 +9,6 @@ public class SpritesMixer : MonoBehaviour
     private int _lastDirection = 0;
     private bool _isMoving = false;
     
-    [SerializeField] private Sprite[] _sprites;
-    [SerializeField] private AnimationClip[] _animations;
     private Animator _animator;
     
     private void Awake()
@@ -22,17 +20,33 @@ public class SpritesMixer : MonoBehaviour
     
     private void Update()
     {
-        if (_multiInputSystem.LastDirection != _lastDirection)
+        if (_multiInputSystem.IsMoving())
         {
-            _lastDirection = _multiInputSystem.LastDirection;
-            if (_isMoving)
+            if (_multiInputSystem.LastDirection == 0)
             {
-                _animator.Play(_animations[_lastDirection].name);
+                _animator.SetFloat("X" , 0);
+                _animator.SetFloat("Y" , 1);
             }
-            else
+            else if (_multiInputSystem.LastDirection == 1)
             {
-                _spriteRenderer.sprite = _sprites[_lastDirection];
+                _animator.SetFloat("X" , -1);
+                _animator.SetFloat("Y" , 0);
             }
+            else if (_multiInputSystem.LastDirection == 2)
+            {
+                _animator.SetFloat("X" , 0);
+                _animator.SetFloat("Y" , -1);
+            }
+            else if (_multiInputSystem.LastDirection == 3)
+            {
+                _animator.SetFloat("X" , 1);
+                _animator.SetFloat("Y" , 0);
+            }
+        }
+        else
+        {
+            _animator.SetFloat("X" , 0);
+            _animator.SetFloat("Y" , 0);
         }
     }
 }
