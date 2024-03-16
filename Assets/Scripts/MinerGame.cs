@@ -11,6 +11,8 @@ public class MinerGame : MonoBehaviour
     [SerializeField] private List<Sprite> keyboardPrompts;
     [SerializeField] private List<Sprite> gamepadPrompts;
     [SerializeField] private List<Sprite> completionSprites;
+    [SerializeField] private AudioSource dzwienkKopania;
+    [SerializeField] private AudioSource dzwienkJebania;
     [SerializeField] private int promptCount = 8;
     
     private SpriteRenderer minigameRenderer;
@@ -69,6 +71,7 @@ public class MinerGame : MonoBehaviour
         }
         this.currentPrompt = randomizePrompt();
         this.currentPromptCount++;
+        dzwienkKopania.Play();
         if (this.isGamepad)
         {
             this.minigameRenderer.sprite = gamepadPrompts[this.currentPrompt];
@@ -93,6 +96,7 @@ public class MinerGame : MonoBehaviour
             }
             else
             {
+                dzwienkJebania.Play();
                 StartCoroutine(ShakePrompt());
             }
             inputtedPrompt = -1; // Reset inputted prompt

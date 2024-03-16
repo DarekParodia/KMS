@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using NaughtyAttributes;
@@ -19,11 +20,14 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject klepsydra;
     [SerializeField] private Timer timer;
     [SerializeField] private GameObject circle;
+    [SerializeField] private AudioSource shootSound;
     
     PlayerInput playerInput;
     private Vector2 look;
     private playerCrystalManager pcm;
     private Klepsa klepsa;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    private bool isInvincible = false;
     void Start()
     {
         this.playerInput = GetComponent<PlayerInput>();
@@ -32,8 +36,16 @@ public class Player : MonoBehaviour
     }
 
     // Update is called once per frame
-     void Update()
+    private void FixedUpdate()
+    {
+        this.currentHP += 0.01f;
+        this.currentHP = Mathf.Clamp(this.currentHP, 0, this.maxHP);
+    }
+
+    void Update()
      {
+         // gradually change color to red
+         this.spriteRenderer.color = Color.Lerp(Color.white, Color.red, 1 - (currentHP / maxHP));
          if (isGamepad)
          {
              if (look != Vector2.zero)
@@ -81,6 +93,7 @@ public class Player : MonoBehaviour
 
              // Create bullet at the position of the first child of the gun plus the offset
              GameObject bullet = Instantiate(bulletPrefab, factGun.position, factGun.rotation);
+             shootSound.Play();
              bullet.GetComponent<Rigidbody2D>().velocity = gun.transform.right * bulletVelo;
              bullet.GetComponent<Bullet>().bulletKnockbackFactor = bulletKnockbackFactor;
              bullet.GetComponent<Bullet>().bulletVelo = bulletVelo;
@@ -118,5 +131,27 @@ public class Player : MonoBehaviour
      {
          GameObject newCircle = Instantiate(circle, transform.position, Quaternion.identity);
          newCircle.transform.position = transform.position;
+     }
+     public void playerHit(float damage)
+     {
+         Debug.Log("Player hit");
+            if (isInvincible) return;
+         this.currentHP -= damage;
+         if (this.currentHP <= 0)
+         {
+             this.gameObject.SetActive(false);
+         }
+         invincibilityForSeconds(0.3f);
+     }
+     public void invincibilityForSeconds(float seconds)
+     {
+         StartCoroutine(invincibilityCoroutine(seconds));
+     }
+     
+     private IEnumerator invincibilityCoroutine(float seconds)
+     {
+         this.isInvincible = true;
+         yield return new WaitForSeconds(seconds);
+         this.isInvincible = false;
      }
 }   

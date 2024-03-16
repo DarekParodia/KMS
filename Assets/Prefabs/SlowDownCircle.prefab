@@ -29,8 +29,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.95, y: -0.65, z: 0.041358758}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 30613bba7f9d7fa5fb82533fd96de6d9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4243dcc5e18dfe00b9b20d8a994ac6fe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.4117647}
   m_FlipX: 0
   m_FlipY: 0
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slowTimeCircleSprite: {fileID: 21300000, guid: 30613bba7f9d7fa5fb82533fd96de6d9, type: 3}
-  slowTimeSandSprite: {fileID: 21300000, guid: c080d3deac8982946b5cd8e8b626a85a, type: 3}
+  slowTimeSandSprite: {fileID: 21300000, guid: 4243dcc5e18dfe00b9b20d8a994ac6fe, type: 3}
   sizeSmoothness: 2
   timeFactor: 0.17
   slowTimeEffectDuration: 15
