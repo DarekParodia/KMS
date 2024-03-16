@@ -511,6 +511,11 @@ MonoBehaviour:
   shardSlider: {fileID: 0}
   maxShards: 10
   currentShards: 0
+  upgrade1: {fileID: 0}
+  upgrade2: {fileID: 0}
+  upgrade1Sprite: {fileID: 0}
+  upgrade2Sprite: {fileID: 0}
+  upgrade3Sprite: {fileID: 0}
   shardText: {fileID: 0}
 --- !u!114 &9083997891203714363
 MonoBehaviour:
@@ -537,7 +542,7 @@ MonoBehaviour:
   timer: {fileID: 0}
   circle: {fileID: 5341766686173254570, guid: 6df56c514ec90c2cbbae9eeb13560c47, type: 3}
   shootSound: {fileID: 4739422449574515444}
-  spriteRenderer: {fileID: 0}
+  spriteRenderer: {fileID: 8376694344765837006}
 --- !u!114 &3429796679694456610
 MonoBehaviour:
   m_ObjectHideFlags: 0
