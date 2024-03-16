@@ -69,7 +69,8 @@ public class playerCrystalManager : MonoBehaviour
             else
             {
                 // jak krysztal daleko
-                pointer.transform.rotation = Quaternion.Slerp(pointer.transform.rotation, Quaternion.Euler(0, 0, getClosestCrystalAngle() - 90.0f), rotationSmoothness * Time.deltaTime);
+                pointer.transform.rotation = Quaternion.Slerp(pointer.transform.rotation,
+                    Quaternion.Euler(0, 0, getClosestCrystalAngle() - 90.0f), rotationSmoothness * Time.deltaTime);
                 pointer.SetActive(true);
                 isCloseEnough = false;
                 mineText.SetActive(false);

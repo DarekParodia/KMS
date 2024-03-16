@@ -6,126 +6,86 @@ using UnityEngine.InputSystem;
 
 public class MinerGame : MonoBehaviour
 {
-    [SerializeField] private GameObject rightPrompt;
-    [SerializeField] private GameObject leftPrompt;
+    [SerializeField] private GameObject minigameRendererObject;
     [SerializeField] private List<Sprite> keyboardPrompts;
     [SerializeField] private List<Sprite> gamepadPrompts;
-    [SerializeField] private float promptTime = 2.0f;
-    [SerializeField] private int promptCount = 10;
+    [SerializeField] private int promptCount = 8;
     
-    private SpriteRenderer lrend;
-    private SpriteRenderer rrend;
+    private SpriteRenderer minigameRenderer;
+    private playerCrystalManager playerCrystalManager;
     
     private bool isGamepad = true;
     private bool gameRunning = false;
     private int currentPrompt = 0;
     private int inputtedPrompt = -1;
-    private float lastGeneratedPrompt = 0.0f;
-    private int currentPromptCount = 0;
+    [SerializeField] public int currentPromptCount = 0;
     
-    private bool right = false;
-    // Update is called once per frame
     private void Start()
     {
-        this.rrend = rightPrompt.GetComponent<SpriteRenderer>();
-        this.lrend = leftPrompt.GetComponent<SpriteRenderer>();
-        this.generatePrompt(true);
-    }
-
-    void playerWrong()
-    {
-        Debug.Log("Wrong");
-        right = !right;
-    }
-    void playerCorrect()
-    {
-        Debug.Log("Correct");
-        this.currentPromptCount++;
-        right = !right;
-    }
-    void Update()
-    {
-        if (gameRunning) 
-        {
-            if(currentPromptCount >= promptCount)
-            {
-                this.abortGame();
-                return;
-            }
-            if (inputtedPrompt == currentPrompt)
-            {
-                this.playerCorrect();
-                this.generatePrompt();
-                refreshSprites();
-                inputtedPrompt = -1;
-            }
-            else if(inputtedPrompt != -1)
-            {
-                this.playerWrong();
-                this.generatePrompt();
-                refreshSprites();
-                inputtedPrompt = -1;
-            }
-            this.generatePrompt();
-            refreshSprites();
-        }
-        else
-        {
-            this.updateSprite(null);
-        }
-    }
-
-    void refreshSprites()
-    {
-        if (isGamepad)
-        {
-            this.updateSprite(this.gamepadPrompts[currentPrompt]);
-        }
-        else
-        {
-            this.updateSprite(this.keyboardPrompts[currentPrompt]);
-        }
-    }
-    void updateSprite(Sprite sprite)
-    {
-        if (sprite == null)
-        {
-            this.lrend.sprite = sprite;
-            this.rrend.sprite = sprite;
-        }
-        else if (right)
-        {
-            this.rrend.sprite = sprite;
-            this.lrend.sprite = null;
-        }
-        else
-        {
-            this.rrend.sprite = null;
-            this.lrend.sprite = sprite;
-        }
-        
+        this.minigameRenderer = minigameRendererObject.GetComponent<SpriteRenderer>();
+        this.playerCrystalManager = GetComponent<playerCrystalManager>();
     }
     
-    void generatePrompt(bool passed = false)
-    {
-        if(Time.time - lastGeneratedPrompt < promptTime && !passed)
-            return;
-        this.currentPrompt = randomizePrompt();
-        this.lastGeneratedPrompt = Time.time;
-        if (!passed)
-            this.playerWrong();
-    }
-
     public void startGame()
     {
-        Debug.Log("the start");
         this.gameRunning = true;
+        this.currentPromptCount = 0;
+        // Generate the first prompt for a gamepad
+        this.generatePrompt(true, 0); // Assuming the first prompt is correct
     }
+
 
     public void abortGame()
     {
         Debug.Log("the end");
         this.gameRunning = false;
+    }
+    
+    public void endGame()
+    {
+        Debug.Log("the end");
+        this.gameRunning = false;
+        playerCrystalManager.stopMining();
+    }
+    
+    private void generatePrompt(bool isGamepad, int correctButton)
+    {
+        if (currentPromptCount >= promptCount)
+        {
+            endGame();
+            return;
+        }
+        this.isGamepad = isGamepad;
+        this.currentPrompt = randomizePrompt();
+        this.currentPromptCount++;
+        Debug.Log($"Generated prompt: {this.currentPrompt}, Is Gamepad: {isGamepad}");
+        if (isGamepad)
+        {
+            this.minigameRenderer.sprite = gamepadPrompts[this.currentPrompt];
+        }
+        else
+        {
+            this.minigameRenderer.sprite = keyboardPrompts[this.currentPrompt];
+        }
+        Debug.Log($"Current sprite: {this.minigameRenderer.sprite}");
+        
+        this.inputtedPrompt = -1; // Reset inputted prompt
+    }
+
+    private void Update()
+    {
+        if (gameRunning && inputtedPrompt != -1)
+        {
+            if (inputtedPrompt == currentPrompt)
+            {
+                generatePrompt(isGamepad, randomizePrompt());
+            }
+            else
+            {
+                StartCoroutine(ShakePrompt());
+            }
+            inputtedPrompt = -1; // Reset inputted prompt
+        }
     }
 
     void OnB1(InputValue value)
@@ -152,4 +112,16 @@ public class MinerGame : MonoBehaviour
     {
         return UnityEngine.Random.Range(0, 4);
     }
+
+    IEnumerator ShakePrompt()
+    {
+        Vector3 originalPosition = minigameRenderer.transform.position;
+        for (int i = 0; i < 5; i++)
+        {
+            minigameRenderer.transform.position = originalPosition + new Vector3(UnityEngine.Random.Range(-0.1f, 0.1f), UnityEngine.Random.Range(-0.1f, 0.1f), 0);
+            yield return new WaitForSeconds(0.1f);
+        }
+        minigameRenderer.transform.position = originalPosition;
+    }
+
 }
