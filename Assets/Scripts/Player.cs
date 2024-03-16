@@ -25,6 +25,8 @@ public class Player : MonoBehaviour
     private Vector2 look;
     private playerCrystalManager pcm;
     private Klepsa klepsa;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    private bool isInvincible = false;
     void Start()
     {
         this.playerInput = GetComponent<PlayerInput>();
@@ -35,6 +37,8 @@ public class Player : MonoBehaviour
     // Update is called once per frame
      void Update()
      {
+         // gradually change color to red
+         this.spriteRenderer.color = Color.Lerp(Color.white, Color.red, 1 - (currentHP / maxHP));
          if (isGamepad)
          {
              if (look != Vector2.zero)
@@ -120,5 +124,27 @@ public class Player : MonoBehaviour
      {
          GameObject newCircle = Instantiate(circle, transform.position, Quaternion.identity);
          newCircle.transform.position = transform.position;
+     }
+     public void playerHit(float damage)
+     {
+         Debug.Log("Player hit");
+            if (isInvincible) return;
+         this.currentHP -= damage;
+         if (this.currentHP <= 0)
+         {
+             this.gameObject.SetActive(false);
+         }
+         invincibilityForSeconds(0.3f);
+     }
+     public void invincibilityForSeconds(float seconds)
+     {
+         StartCoroutine(invincibilityCoroutine(seconds));
+     }
+     
+     private IEnumerator invincibilityCoroutine(float seconds)
+     {
+         this.isInvincible = true;
+         yield return new WaitForSeconds(seconds);
+         this.isInvincible = false;
      }
 }   

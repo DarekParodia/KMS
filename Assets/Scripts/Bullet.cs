@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour
      public float bulletTTL = 2.0f;
      public float bulletVelo = 8.0f;
      public float bulletKnockbackFactor = 1.0f;
+     public float damage = 10.0f;
     void enemyHit(GameObject hitObject)
     {
         // Get the enemy script
@@ -17,25 +18,30 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject);
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
+{
+    // Check if the bullet has hit an enemy
+    if (collision.gameObject.CompareTag("Enemy")) 
     {
-        // Check if the bullet has hit an enemy
-        if (collision.gameObject.CompareTag("Enemy")) 
-        {
-            // Call the enemyHit function
-            enemyHit(collision.gameObject);
+        // Call the enemyHit function
+        enemyHit(collision.gameObject);
 
-            // Get the Rigidbody2D component of the enemy
-            Rigidbody2D enemyRigidbody = collision.gameObject.GetComponent<Rigidbody2D>();
+        // Get the Rigidbody2D component of the enemy
+        Rigidbody2D enemyRigidbody = collision.gameObject.GetComponent<Rigidbody2D>();
 
-            // Calculate the force to be applied
-            Vector2 force = transform.right * bulletVelo * bulletKnockbackFactor / 100;
+        // Calculate the force to be applied
+        Vector2 force = transform.right * bulletVelo * bulletKnockbackFactor / 100;
 
-            // Apply the force to the enemy
-            enemyRigidbody.AddForce(force);
-        
-            // destroy itself
-            Destroy(gameObject);
-        }
+        // Apply the force to the enemy
+        enemyRigidbody.AddForce(force);
+    
+        // destroy itself
+        Destroy(gameObject);
+    }
+}
+
+    public float getDamage()
+    {
+        return this.damage;
     }
 }
