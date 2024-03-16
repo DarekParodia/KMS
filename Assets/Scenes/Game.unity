@@ -527,6 +527,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7058925763727676523, guid: 8f5347b34e1b2ae4b83f4a925eaec54a, type: 3}
   m_PrefabInstance: {fileID: 269877392}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &860910815 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2369270705756461382, guid: 1eff6db5d7c295f47b0ff228ae53f1ee, type: 3}
+  m_PrefabInstance: {fileID: 7638657683360188957}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &893379852
 GameObject:
   m_ObjectHideFlags: 0
@@ -714,6 +725,14 @@ PrefabInstance:
       propertyPath: m_NeverAutoSwitchControlSchemes
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4299680636965569550, guid: 7da66d7bf1d974346b48f508d72dff12, type: 3}
+      propertyPath: shardText
+      value: 
+      objectReference: {fileID: 7638657683360188959}
+    - target: {fileID: 4299680636965569550, guid: 7da66d7bf1d974346b48f508d72dff12, type: 3}
+      propertyPath: shardSlider
+      value: 
+      objectReference: {fileID: 860910815}
     - target: {fileID: 5888047852711482731, guid: 7da66d7bf1d974346b48f508d72dff12, type: 3}
       propertyPath: m_Name
       value: Player 2
@@ -792,6 +811,74 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f5347b34e1b2ae4b83f4a925eaec54a, type: 3}
+--- !u!114 &1874987333 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 785504483419368471, guid: 1eff6db5d7c295f47b0ff228ae53f1ee, type: 3}
+  m_PrefabInstance: {fileID: 7638657683360188957}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1001 &1995436821
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 398911787102656246, guid: 43c93f9a8aca5ab6fa401024e79a2044, type: 3}
+      propertyPath: m_Name
+      value: Shard
+      objectReference: {fileID: 0}
+    - target: {fileID: 4150326216999495999, guid: 43c93f9a8aca5ab6fa401024e79a2044, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4150326216999495999, guid: 43c93f9a8aca5ab6fa401024e79a2044, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4150326216999495999, guid: 43c93f9a8aca5ab6fa401024e79a2044, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.056680027
+      objectReference: {fileID: 0}
+    - target: {fileID: 4150326216999495999, guid: 43c93f9a8aca5ab6fa401024e79a2044, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4150326216999495999, guid: 43c93f9a8aca5ab6fa401024e79a2044, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4150326216999495999, guid: 43c93f9a8aca5ab6fa401024e79a2044, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4150326216999495999, guid: 43c93f9a8aca5ab6fa401024e79a2044, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4150326216999495999, guid: 43c93f9a8aca5ab6fa401024e79a2044, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4150326216999495999, guid: 43c93f9a8aca5ab6fa401024e79a2044, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4150326216999495999, guid: 43c93f9a8aca5ab6fa401024e79a2044, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 43c93f9a8aca5ab6fa401024e79a2044, type: 3}
 --- !u!1 &2072514898
 GameObject:
   m_ObjectHideFlags: 0
@@ -1019,6 +1106,14 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4299680636965569550, guid: 7da66d7bf1d974346b48f508d72dff12, type: 3}
+      propertyPath: shardText
+      value: 
+      objectReference: {fileID: 7638657683360188960}
+    - target: {fileID: 4299680636965569550, guid: 7da66d7bf1d974346b48f508d72dff12, type: 3}
+      propertyPath: shardSlider
+      value: 
+      objectReference: {fileID: 1874987333}
     - target: {fileID: 4887372916842726883, guid: 7da66d7bf1d974346b48f508d72dff12, type: 3}
       propertyPath: m_SortingOrder
       value: 2
@@ -1261,6 +1356,28 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7087712182018376593, guid: 1eff6db5d7c295f47b0ff228ae53f1ee, type: 3}
   m_PrefabInstance: {fileID: 7638657683360188957}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7638657683360188959 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 339415872699632446, guid: 1eff6db5d7c295f47b0ff228ae53f1ee, type: 3}
+  m_PrefabInstance: {fileID: 7638657683360188957}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7638657683360188960 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6296107928868644695, guid: 1eff6db5d7c295f47b0ff228ae53f1ee, type: 3}
+  m_PrefabInstance: {fileID: 7638657683360188957}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1273,3 +1390,4 @@ SceneRoots:
   - {fileID: 645334152}
   - {fileID: 2072514900}
   - {fileID: 893379853}
+  - {fileID: 1995436821}

@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,7 +11,10 @@ public class ShardManager : MonoBehaviour
     [SerializeField] private Slider shardSlider;
     [SerializeField] private float maxShards = 10;
     [SerializeField] private float currentShards = 0;
-    [SerializeField] private Collider2D playerCollider;
+
+    [SerializeField]
+    private TextMeshProUGUI shardText;
+    
     void Start()
     {
         
@@ -20,7 +25,7 @@ public class ShardManager : MonoBehaviour
     {
         shardSlider.value = currentShards;
         shardSlider.maxValue = maxShards;
-        
+        shardText.text = currentShards + " / " + maxShards;
         // collision
         
     }
@@ -31,5 +36,12 @@ public class ShardManager : MonoBehaviour
         currentShards = Mathf.Clamp(currentShards, 0, maxShards);
     }
 
-    public void damageUpgrade(){}
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Shard"))
+        {
+            Destroy(other.gameObject);
+            addShard();
+        }
+    }
 }

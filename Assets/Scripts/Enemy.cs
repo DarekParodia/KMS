@@ -37,7 +37,7 @@ public class Enemy : MonoBehaviour
         spriteRenderer.color = Color.Lerp(Color.white, Color.red, 1 - (currentHP / maxHP));
         if(this.currentHP <= 0)
         {   
-            if ( UnityEngine.Random.Range(0f, 1f) <= 0.1f)
+            if ( UnityEngine.Random.Range(0f, 1f) <= 0.5f)
             {
                 SpawnShard();
             }

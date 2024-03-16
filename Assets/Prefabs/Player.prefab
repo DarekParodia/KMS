@@ -591,6 +591,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a284795d5e6c9e2479320acc640ca573, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shardSlider: {fileID: 0}
+  maxShards: 10
+  currentShards: 0
+  playerCollider: {fileID: 0}
 --- !u!114 &9083997891203714363
 MonoBehaviour:
   m_ObjectHideFlags: 0
