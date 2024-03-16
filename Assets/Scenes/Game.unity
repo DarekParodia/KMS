@@ -675,6 +675,22 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.15686272
       objectReference: {fileID: 0}
+    - target: {fileID: 4748151433346920961, guid: 165bc1de046d02443843f67e51a19779, type: 3}
+      propertyPath: Enemies
+      value: 
+      objectReference: {fileID: 893379852}
+    - target: {fileID: 4748151433346920961, guid: 165bc1de046d02443843f67e51a19779, type: 3}
+      propertyPath: spawnRate
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4748151433346920961, guid: 165bc1de046d02443843f67e51a19779, type: 3}
+      propertyPath: enemyPrefab
+      value: 
+      objectReference: {fileID: 5255541416253034466, guid: e0508918c611aa44499d1be041a00e01, type: 3}
+    - target: {fileID: 4748151433346920961, guid: 165bc1de046d02443843f67e51a19779, type: 3}
+      propertyPath: spawnRadius
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
