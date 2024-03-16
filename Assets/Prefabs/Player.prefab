@@ -501,7 +501,11 @@ MonoBehaviour:
   maxHP: 100
   currentHP: 100
   gun: {fileID: 1231996122287530788}
+  bulletPrefab: {fileID: 4682424935397689764, guid: 687b2366e087677489c4877de3c102c9, type: 3}
+  bulletTTL: 2
+  bulletVelo: 10
   gunSmoothness: 15
+  isGamepad: 0
 --- !u!114 &3429796679694456610
 MonoBehaviour:
   m_ObjectHideFlags: 0
