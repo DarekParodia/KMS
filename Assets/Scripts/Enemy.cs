@@ -8,9 +8,16 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float minDistance = 1.0f;
     [SerializeField] private float maxDistance = 40.0f;
     
+    public bool isSlowedDown = false;
+    private float slowDownFactor = 0.5f;
+    public bool isFrozen = false;
+    
     private GameObject player;
     void Update()
     {
+        // Adjust speed based on isSlowedDown
+        float adjustedSpeed = isSlowedDown ? speed * slowDownFactor : speed;
+        
         // player detection
         if (getDistanceToPlayer() > maxDistance || player == null)
         {
@@ -20,7 +27,7 @@ public class Enemy : MonoBehaviour
         // movement 2d top down
         if (player != null)
         {
-            this.transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+            this.transform.position = Vector3.MoveTowards(transform.position, player.transform.position, adjustedSpeed * Time.deltaTime);
         }
     }
 
