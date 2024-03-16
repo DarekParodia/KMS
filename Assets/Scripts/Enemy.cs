@@ -13,6 +13,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private GameObject shardPrefab;
     [SerializeField] private AnimationClip[] movementAnimations;
     
+    private Animator Animator;
+    
     private float timeFactor = 1.0f;
     
     public bool isSlowedDown = false;
@@ -29,6 +31,8 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        
+        Animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -53,7 +57,9 @@ public class Enemy : MonoBehaviour
         // movement 2d top down
         if (player != null)
         {
-            this.transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed *Time.deltaTime * timeFactor);
+            Vector3 direction = (player.transform.position - transform.position).normalized;
+            this.transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime * timeFactor);
+            PlayMoveAnimation(direction); // Play animation based on direction
         }
     }
     
@@ -118,5 +124,17 @@ public class Enemy : MonoBehaviour
     public void restore()
     {
         this.timeFactor = 1.0f;
+    }
+    
+    private void PlayMoveAnimation(Vector3 direction)
+    {
+        if (direction.y > 0) // Moving up
+        {
+            Animator.Play(movementAnimations[0].name);
+        }
+        else if (direction.y < 0) // Moving down
+        {
+            Animator.Play(movementAnimations[1].name);
+        }
     }
 }
