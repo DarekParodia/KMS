@@ -56,6 +56,7 @@ public class Player : MonoBehaviour
          // create bullet child at gun position
          if (gun.transform.childCount > 0)
          {
+             
              // Get the position of the first child of the gun
              Transform factGun = gun.transform.GetChild(0);
 

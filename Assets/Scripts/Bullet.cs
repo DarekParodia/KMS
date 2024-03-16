@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
      public float bulletTTL = 2.0f;
-     public float bulletVelo = 10.0f;
+     public float bulletVelo = 8.0f;
      public float bulletKnockbackFactor = 1.0f;
     void enemyHit(GameObject hitObject)
     {
@@ -17,23 +17,24 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject);
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log("Collision");
         // Check if the bullet has hit an enemy
-        if (other.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy")) 
         {
             // Call the enemyHit function
-            enemyHit(other.gameObject);
+            enemyHit(collision.gameObject);
 
             // Get the Rigidbody2D component of the enemy
-            Rigidbody2D enemyRigidbody = other.gameObject.GetComponent<Rigidbody2D>();
+            Rigidbody2D enemyRigidbody = collision.gameObject.GetComponent<Rigidbody2D>();
 
             // Calculate the force to be applied
             Vector2 force = transform.right * bulletVelo * bulletKnockbackFactor;
 
             // Apply the force to the enemy
             enemyRigidbody.AddForce(force);
-            
+        
             // destroy itself
             Destroy(gameObject);
         }
