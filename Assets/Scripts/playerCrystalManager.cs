@@ -32,14 +32,6 @@ public class playerCrystalManager : MonoBehaviour
             this.startMining();
         }
     }
-    private void OnUnInteract(InputValue value)
-    {
-        Debug.Log("Uninteract");
-        if (this.isMining)
-        {
-            this.stopMining();
-        }
-    }
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -122,7 +114,7 @@ public class playerCrystalManager : MonoBehaviour
     {
         this.inputSystem.disableMovement();
         this.isMining = true;
-        minerGame.startGame();
+        minerGame.startGame(this.closestCrystal);
     }
     public void stopMining()
     {

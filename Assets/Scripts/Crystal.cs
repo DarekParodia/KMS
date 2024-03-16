@@ -15,6 +15,11 @@ public class Crystal : MonoBehaviour
     {
         
     }
+    public void mine(GameObject player)
+    {
+        Debug.Log("Mined");
+        Destroy(gameObject);
+    }
     public bool isMined()
     {
         return false;

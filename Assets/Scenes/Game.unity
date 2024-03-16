@@ -703,6 +703,30 @@ PrefabInstance:
       propertyPath: m_NeverAutoSwitchControlSchemes
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3817762316696592687, guid: 7da66d7bf1d974346b48f508d72dff12, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3817762316696592687, guid: 7da66d7bf1d974346b48f508d72dff12, type: 3}
+      propertyPath: m_SortingLayer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3817762316696592687, guid: 7da66d7bf1d974346b48f508d72dff12, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3817762316696592687, guid: 7da66d7bf1d974346b48f508d72dff12, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 779643027
+      objectReference: {fileID: 0}
+    - target: {fileID: 3817762316696592687, guid: 7da66d7bf1d974346b48f508d72dff12, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4887372916842726883, guid: 7da66d7bf1d974346b48f508d72dff12, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5888047852711482731, guid: 7da66d7bf1d974346b48f508d72dff12, type: 3}
       propertyPath: m_Name
       value: Player

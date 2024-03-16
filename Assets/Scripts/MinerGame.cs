@@ -16,6 +16,7 @@ public class MinerGame : MonoBehaviour
     private SpriteRenderer minigameRenderer;
     private SpriteRenderer backgroundRenderer;
     private playerCrystalManager playerCrystalManager;
+    private GameObject crystal;
     
     private bool isGamepad = true;
     private bool gameRunning = false;
@@ -32,12 +33,13 @@ public class MinerGame : MonoBehaviour
         minigameRenderer.sprite = null;
     }
     
-    public void startGame()
+    public void startGame(GameObject crystal)
     {
+        this.crystal = crystal;
         this.gameRunning = true;
         this.currentPromptCount = 0;
         // Generate the first prompt for a gamepad
-        this.generatePrompt(true, 0); // Assuming the first prompt is correct
+        this.generatePrompt( 0); // Assuming the first prompt is correct
     }
 
 
@@ -45,6 +47,9 @@ public class MinerGame : MonoBehaviour
     {
         Debug.Log("the end");
         this.gameRunning = false;
+        minigameRenderer.sprite = null;
+        backgroundRenderer.sprite = null;
+        playerCrystalManager.stopMining();
     }
     
     public void endGame()
@@ -54,26 +59,26 @@ public class MinerGame : MonoBehaviour
         minigameRenderer.sprite = null;
         backgroundRenderer.sprite = null;
         playerCrystalManager.stopMining();
+        this.crystal.GetComponent<Crystal>().mine(gameObject);
     }
     
-    private void generatePrompt(bool isGamepad, int correctButton)
+    private void generatePrompt(int correctButton)
     {
         if (currentPromptCount >= promptCount)
         {
             endGame();
             return;
         }
-        this.isGamepad = isGamepad;
         this.currentPrompt = randomizePrompt();
         this.currentPromptCount++;
         Debug.Log($"Generated prompt: {this.currentPrompt}, Is Gamepad: {isGamepad}");
-        if (isGamepad)
+        if (this.isGamepad)
         {
             this.minigameRenderer.sprite = gamepadPrompts[this.currentPrompt];
         }
         else
         {
-            this.minigameRenderer.sprite = keyboardPrompts[this.currentPrompt];
+            this.minigameRenderer.sprite = gamepadPrompts[this.currentPrompt];
         }
         this.backgroundRenderer.sprite = completionSprites[this.currentPromptCount-1];
         Debug.Log($"Current sprite: {this.minigameRenderer.sprite}");
@@ -87,7 +92,7 @@ public class MinerGame : MonoBehaviour
         {
             if (inputtedPrompt == currentPrompt)
             {
-                generatePrompt(isGamepad, randomizePrompt());
+                generatePrompt(randomizePrompt());
             }
             else
             {
@@ -115,6 +120,11 @@ public class MinerGame : MonoBehaviour
     void OnB4(InputValue value)
     {
         this.inputtedPrompt = 3;
+    }
+    
+    private void OnUnInteract(InputValue value)
+    {
+        this.abortGame();
     }
     
     private int randomizePrompt()
