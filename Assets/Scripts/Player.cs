@@ -77,7 +77,7 @@ public class Player : MonoBehaviour
             }
      }
 
-    void playerDead()
+    public void playerDead()
     {
         ui.SetActive(false);
         endScreen.SetActive(true);

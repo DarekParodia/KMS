@@ -13,6 +13,7 @@ public class Timer : MonoBehaviour
     [SerializeField] private TextMeshProUGUI timeText;
     [SerializeField] private Slider timeSlider;
     [SerializeField] private float timeToAdd = 10.0f;
+    [SerializeField] private Player player;
     private float totalTime = 0.0f;
     void Start()
     {
@@ -28,6 +29,7 @@ public class Timer : MonoBehaviour
                 time = 0;
                 isTimerPaused = true;
                 Debug.Log("Time's up!");
+                player.playerDead();
             }
             
             // update text
