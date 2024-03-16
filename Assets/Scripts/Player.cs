@@ -139,7 +139,7 @@ public class Player : MonoBehaviour
          this.currentHP -= damage;
          if (this.currentHP <= 0)
          {
-             this.gameObject.SetActive(false);
+             Destroy(gameObject);
          }
          invincibilityForSeconds(0.3f);
      }
@@ -153,5 +153,13 @@ public class Player : MonoBehaviour
          this.isInvincible = true;
          yield return new WaitForSeconds(seconds);
          this.isInvincible = false;
+     }
+     public void addDmg(float dmg)
+     {
+         this.bulletKnockbackFactor += dmg;
+     }
+     public void addSpeed(float speed)
+     {
+         this.bulletVelo += speed;
      }
 }   
