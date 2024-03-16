@@ -48,4 +48,9 @@ public class Enemy : MonoBehaviour
         if (this.player == null) return 0;
         return Vector3.Distance(transform.position, this.player.transform.position);
     }
+
+    public void enemyHit(GameObject bullet)
+    {
+        
+    }
 }

@@ -270,8 +270,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1378138541
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -503,7 +503,7 @@ MonoBehaviour:
   gun: {fileID: 1231996122287530788}
   bulletPrefab: {fileID: 4682424935397689764, guid: 687b2366e087677489c4877de3c102c9, type: 3}
   bulletTTL: 2
-  bulletVelo: 10
+  bulletVelo: 78.7
   gunSmoothness: 15
   isGamepad: 0
 --- !u!114 &3429796679694456610

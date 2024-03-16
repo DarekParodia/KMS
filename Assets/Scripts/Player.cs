@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private float bulletTTL = 2.0f;
     [SerializeField] private float bulletVelo = 10.0f;
+    [SerializeField] private float bulletKnockbackFactor = 1.0f;
     [SerializeField] private float gunSmoothness = 15.0f;
     [SerializeField] private bool isGamepad = false;
     
@@ -53,9 +54,21 @@ public class Player : MonoBehaviour
      void OnFire(InputValue value)
      {
          // create bullet child at gun position
-         GameObject bullet = Instantiate(bulletPrefab, gun.transform.position, gun.transform.rotation);
-         bullet.GetComponent<Rigidbody2D>().velocity = gun.transform.right * bulletVelo;
-         Destroy(bullet, bulletTTL);
+         if (gun.transform.childCount > 0)
+         {
+             // Get the position of the first child of the gun
+             Transform factGun = gun.transform.GetChild(0);
+
+             // Create an offset for the bullet position
+             // Vector3 bulletOffset = new Vector3(0, 0.5f, 0); // Adjust the y value as needed
+
+             // Create bullet at the position of the first child of the gun plus the offset
+             GameObject bullet = Instantiate(bulletPrefab, factGun.position, factGun.rotation);
+             bullet.GetComponent<Rigidbody2D>().velocity = gun.transform.right * bulletVelo;
+             // bullet.GetComponent<Bullet>().bulletKnockbackFactor = bulletKnockbackFactor;
+             // bullet.GetComponent<Bullet>().bulletVelo = bulletVelo;
+             Destroy(bullet, bulletTTL);
+         }
      }
      void setKeyboard()
      {
