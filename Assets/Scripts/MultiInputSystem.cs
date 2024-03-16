@@ -11,9 +11,13 @@ public class MultiInputSystem : MonoBehaviour
     [SerializeField] public int LastDirection = 0;
     [SerializeField] private bool _isMoving = false;
     [SerializeField] private bool _isMovementEnabled = true;
+    [SerializeField] private float stepIntenisty = 0.3f;
+    [SerializeField] private AudioSource stepSound;
     private Rigidbody2D _rigidbody;
     private Vector2 _movementInput;
     
+    private float lastStepTime = 0;
+     
 
     private void Awake()
     {
@@ -25,6 +29,12 @@ public class MultiInputSystem : MonoBehaviour
         if (!_isMovementEnabled) return;
         _rigidbody.velocity = _movementInput * _moveSpeed;
         LastDirection = GetDirection(_movementInput);
+        if (lastStepTime + stepIntenisty < Time.time && _isMoving)
+        {
+            lastStepTime = Time.time;
+            stepSound.Play();
+            //Debug.Log("Step");
+        }
     }
     
     private void OnMove(InputValue value)

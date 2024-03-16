@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject klepsydra;
     [SerializeField] private Timer timer;
     [SerializeField] private GameObject circle;
+    [SerializeField] private AudioSource shootSound;
     
     PlayerInput playerInput;
     private Vector2 look;
@@ -81,6 +82,7 @@ public class Player : MonoBehaviour
 
              // Create bullet at the position of the first child of the gun plus the offset
              GameObject bullet = Instantiate(bulletPrefab, factGun.position, factGun.rotation);
+             shootSound.Play();
              bullet.GetComponent<Rigidbody2D>().velocity = gun.transform.right * bulletVelo;
              bullet.GetComponent<Bullet>().bulletKnockbackFactor = bulletKnockbackFactor;
              bullet.GetComponent<Bullet>().bulletVelo = bulletVelo;
