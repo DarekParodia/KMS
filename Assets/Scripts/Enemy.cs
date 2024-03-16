@@ -101,7 +101,10 @@ public class Enemy : MonoBehaviour
             Debug.Log("szkyl");
             SlowTimeCircle slowTimeCircle = other.gameObject.GetComponent<SlowTimeCircle>();
             this.timeFactor = slowTimeCircle.getTimeFactor();
-            slowTimeCircle.addEnemy(this);
+        }
+        else
+        {
+            this.timeFactor = 1.0f;
         }
         if (other.gameObject.CompareTag("Player") && Time.time - lastAttack > 1.0f)
         {

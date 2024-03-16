@@ -8,6 +8,7 @@ public class Bullet : MonoBehaviour
      public float bulletVelo = 8.0f;
      public float bulletKnockbackFactor = 1.0f;
      public float damage = 10.0f;
+     private float timeFactor = 1.0f;
     void enemyHit(GameObject hitObject)
     {
         // Get the enemy script
@@ -38,6 +39,16 @@ public class Bullet : MonoBehaviour
     
         // destroy itself
         Destroy(gameObject);
+    }
+    if (collision.gameObject.CompareTag("Skill"))
+    {
+        Debug.Log("szkyl");
+        SlowTimeCircle slowTimeCircle = collision.gameObject.GetComponent<SlowTimeCircle>();
+        this.timeFactor = slowTimeCircle.getTimeFactor();
+    }
+    else
+    {
+        this.timeFactor = 1.0f;
     }
 }
 
