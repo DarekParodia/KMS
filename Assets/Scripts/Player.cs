@@ -79,6 +79,7 @@ public class Player : MonoBehaviour
 
     public void playerDead()
     {
+        GetComponent<muzy>().stopMuzyka();
         ui.SetActive(false);
         endScreen.SetActive(true);
         scoreText.text = timer.getTotalTime().ToString("F2");
