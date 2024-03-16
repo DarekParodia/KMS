@@ -11,7 +11,6 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float maxHP = 100.0f;
     [SerializeField] private float currentHP = 100.0f;
     [SerializeField] private GameObject shardPrefab;
-    [SerializeField] private AnimationClip[] movementAnimations;
     
     private Animator Animator;
     
@@ -130,11 +129,21 @@ public class Enemy : MonoBehaviour
     {
         if (direction.y > 0) // Moving up
         {
-            Animator.Play(movementAnimations[0].name);
+            Animator.SetInteger("Direction", 0); 
         }
-        else if (direction.y < 0) // Moving down
+        else if (direction.y < 0) // Moving dowm
         {
-            Animator.Play(movementAnimations[1].name);
+            Animator.SetInteger("Direction", 1);
+        }
+        if (direction.x > 0) // Moving right
+        {
+            // unflip the sprite
+            Animator.transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
+        else if (direction.x < 0) // Moving left
+        {
+            // flip the sprite to face left
+            Animator.transform.rotation = Quaternion.Euler(0, 180, 0);
         }
     }
 }

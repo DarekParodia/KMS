@@ -54,9 +54,6 @@ MonoBehaviour:
   maxHP: 100
   currentHP: 100
   shardPrefab: {fileID: 398911787102656246, guid: 43c93f9a8aca5ab6fa401024e79a2044, type: 3}
-  movementAnimations:
-  - {fileID: 7400000, guid: 2b5e122d58f48882fb9ca06d0096a38d, type: 2}
-  - {fileID: 7400000, guid: fde16a0a24779501398a3d0a70eaf47a, type: 2}
   isSlowedDown: 0
   isFrozen: 0
   slowTimeCircle: {fileID: 0}
