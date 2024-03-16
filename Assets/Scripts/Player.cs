@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using NaughtyAttributes;
@@ -35,7 +36,13 @@ public class Player : MonoBehaviour
     }
 
     // Update is called once per frame
-     void Update()
+    private void FixedUpdate()
+    {
+        this.currentHP += 0.01f;
+        this.currentHP = Mathf.Clamp(this.currentHP, 0, this.maxHP);
+    }
+
+    void Update()
      {
          // gradually change color to red
          this.spriteRenderer.color = Color.Lerp(Color.white, Color.red, 1 - (currentHP / maxHP));
