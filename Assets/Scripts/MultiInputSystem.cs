@@ -44,14 +44,16 @@ public class MultiInputSystem : MonoBehaviour
     
     private int GetDirection(Vector2 movement)
     {
-        // 0 = top, 1 = top right, 2 = right, 3 = bottom right, 4 = bottom, 5 = bottom left, 6 = left, 7 = top left
+        // 0 = top, 1 = right, 2 = bottom, 3 = left
         if (movement != Vector2.zero) _isMoving = true;
         if (movement == Vector2.zero) _isMoving = false;
         if (movement == Vector2.zero) return LastDirection;
         float angle = Mathf.Atan2(movement.y, movement.x) * Mathf.Rad2Deg;
         angle = (angle + 270) % 360; // Ensure angle is positive and 0 points to the top
-        return (int)Mathf.Round(angle / 45) % 8;
+        int direction = (int)Mathf.Round(angle / 90) % 4; // Adjusted to return 4 directions
+        return direction;
     }
+
     
     public bool IsMoving()
     {
