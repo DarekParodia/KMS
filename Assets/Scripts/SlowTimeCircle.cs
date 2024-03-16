@@ -8,6 +8,8 @@ public class SlowTimeCircle : MonoBehaviour
     [SerializeField] private Sprite slowTimeCircleSprite; // The sprite for the slow time circle
     [SerializeField] private Sprite slowTimeSandSprite; // The sprite for the slow time sand
     
+    private Collider2D slowTimeCircleCollider; // The collider for the slow time circle
+    
     public float slowTimeEffectDuration = 15f; // Duration of the slow time effect in seconds
     public float activationDelay = 3f; // Delay before the slow time effect is applied
 
@@ -27,31 +29,11 @@ public class SlowTimeCircle : MonoBehaviour
         // Change the sprite to the slow time circle
         spriteRenderer.sprite = slowTimeCircleSprite;
         
-        // Apply the slow time effect to enemies within the circle's radius
-        Collider2D[] enemiesInRange = Physics2D.OverlapCircleAll(transform.position, transform.localScale.x / 2);
-        foreach (Collider2D enemy in enemiesInRange)
-        {
-            // Assuming enemies have a script that can be slowed down
-            Enemy enemyScript = enemy.GetComponent<Enemy>();
-            if (enemyScript != null)
-            {
-                enemyScript.isSlowedDown = true;
-            }
-        }
-
-        // Wait for the duration of the slow time effect
+        // Scale the circle 10 times its original size
+        transform.localScale *= 10;
+        
+        // Wait for the durme effect
         yield return new WaitForSeconds(slowTimeEffectDuration);
-
-        // Reset the isSlowedDown variable for enemies within the circle's radius
-        enemiesInRange = Physics2D.OverlapCircleAll(transform.position, transform.localScale.x / 2);
-        foreach (Collider2D enemy in enemiesInRange)
-        {
-            Enemy enemyScript = enemy.GetComponent<Enemy>();
-            if (enemyScript != null)
-            {
-                enemyScript.isSlowedDown = false;
-            }
-        }
 
         // Remove the slow time circle
         Destroy(gameObject);

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 649495966403506398}
   - component: {fileID: 3225021044594263996}
   - component: {fileID: 2634906246019665308}
+  - component: {fileID: 4406936920762430027}
   m_Layer: 0
   m_Name: SlowDownCircle
   m_TagString: Untagged
@@ -101,3 +102,38 @@ MonoBehaviour:
   slowTimeSandSprite: {fileID: 21300000, guid: c080d3deac8982946b5cd8e8b626a85a, type: 3}
   slowTimeEffectDuration: 15
   activationDelay: 3
+--- !u!58 &4406936920762430027
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5341766686173254570}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.64
