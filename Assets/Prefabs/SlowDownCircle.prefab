@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4406936920762430027}
   m_Layer: 0
   m_Name: SlowDownCircle
-  m_TagString: Untagged
+  m_TagString: Skill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,6 +100,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slowTimeCircleSprite: {fileID: 21300000, guid: 30613bba7f9d7fa5fb82533fd96de6d9, type: 3}
   slowTimeSandSprite: {fileID: 21300000, guid: c080d3deac8982946b5cd8e8b626a85a, type: 3}
+  sizeSmoothness: 2
+  timeFactor: 0.17
   slowTimeEffectDuration: 15
   activationDelay: 3
 --- !u!58 &4406936920762430027

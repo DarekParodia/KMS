@@ -19,7 +19,6 @@ public class Bullet : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Collision");
         // Check if the bullet has hit an enemy
         if (collision.gameObject.CompareTag("Enemy")) 
         {

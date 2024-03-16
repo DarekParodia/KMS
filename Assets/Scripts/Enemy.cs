@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float speed = 1.0f;
     [SerializeField] private float minDistance = 1.0f;
     [SerializeField] private float maxDistance = 40.0f;
+    
+    private float timeFactor = 1.0f;
     
     public bool isSlowedDown = false;
     private float slowDownFactor = 0.5f;
@@ -18,11 +21,7 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        // Adjust speed based on isSlowedDown
-        float adjustedSpeed = isSlowedDown ? speed * slowDownFactor : speed;
-        
         if (isFrozen) return;
-        
         // player detection
         if (getDistanceToPlayer() > maxDistance || player == null)
         {
@@ -32,7 +31,7 @@ public class Enemy : MonoBehaviour
         // movement 2d top down
         if (player != null)
         {
-            this.transform.position = Vector3.MoveTowards(transform.position, player.transform.position, adjustedSpeed * Time.deltaTime);
+            this.transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed *Time.deltaTime * timeFactor);
         }
     }
 
@@ -67,22 +66,20 @@ public class Enemy : MonoBehaviour
     }
 
     // This method is called when another object enters a trigger collider attached to this object
-    void OnTriggerStay2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        // Check if the collider belongs to the slow time circle
-        if (other.gameObject == slowTimeCircle)
+        Debug.Log("TRIGGER");
+        if (other.gameObject.CompareTag("Skill"))
         {
-            isSlowedDown = true;
+            Debug.Log("szkyl");
+            SlowTimeCircle slowTimeCircle = other.gameObject.GetComponent<SlowTimeCircle>();
+            this.timeFactor = slowTimeCircle.getTimeFactor();
+            slowTimeCircle.addEnemy(this);
         }
     }
 
-    // This method is called when another object leaves a trigger collider attached to this object
-    void OnTriggerExit2D(Collider2D other)
+    public void restore()
     {
-        // Check if the collider belongs to the slow time circle
-        if (other.gameObject == slowTimeCircle)
-        {
-            isSlowedDown = false;
-        }
+        this.timeFactor = 1.0f;
     }
 }

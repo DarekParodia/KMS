@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Crystal
   - Enemy
+  - Skill
   layers:
   - Default
   - TransparentFX
