@@ -90,4 +90,8 @@ public class Player : MonoBehaviour
      {
          this.playerInput.defaultControlScheme = "Gamepad";
      }
+     public bool isGamepadControl()
+     {
+         return this.isGamepad;
+     }
 }   

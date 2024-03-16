@@ -7,12 +7,14 @@ using UnityEngine.InputSystem;
 public class MinerGame : MonoBehaviour
 {
     [SerializeField] private GameObject minigameRendererObject;
+    [SerializeField] private GameObject minigameBackgroundRendererObject;
     [SerializeField] private List<Sprite> keyboardPrompts;
     [SerializeField] private List<Sprite> gamepadPrompts;
     [SerializeField] private List<Sprite> completionSprites;
     [SerializeField] private int promptCount = 8;
     
     private SpriteRenderer minigameRenderer;
+    private SpriteRenderer backgroundRenderer;
     private playerCrystalManager playerCrystalManager;
     
     private bool isGamepad = true;
@@ -25,6 +27,8 @@ public class MinerGame : MonoBehaviour
     {
         this.minigameRenderer = minigameRendererObject.GetComponent<SpriteRenderer>();
         this.playerCrystalManager = GetComponent<playerCrystalManager>();
+        this.backgroundRenderer = minigameBackgroundRendererObject.GetComponent<SpriteRenderer>();
+        this.isGamepad = GetComponent<Player>().isGamepadControl();
         minigameRenderer.sprite = null;
     }
     
@@ -48,6 +52,7 @@ public class MinerGame : MonoBehaviour
         Debug.Log("the end");
         this.gameRunning = false;
         minigameRenderer.sprite = null;
+        backgroundRenderer.sprite = null;
         playerCrystalManager.stopMining();
     }
     
@@ -70,6 +75,7 @@ public class MinerGame : MonoBehaviour
         {
             this.minigameRenderer.sprite = keyboardPrompts[this.currentPrompt];
         }
+        this.backgroundRenderer.sprite = completionSprites[this.currentPromptCount-1];
         Debug.Log($"Current sprite: {this.minigameRenderer.sprite}");
         
         this.inputtedPrompt = -1; // Reset inputted prompt
