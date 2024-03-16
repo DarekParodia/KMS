@@ -24,6 +24,7 @@ public class MinerGame : MonoBehaviour
     {
         this.minigameRenderer = minigameRendererObject.GetComponent<SpriteRenderer>();
         this.playerCrystalManager = GetComponent<playerCrystalManager>();
+        minigameRenderer.sprite = null;
     }
     
     public void startGame()
@@ -45,6 +46,7 @@ public class MinerGame : MonoBehaviour
     {
         Debug.Log("the end");
         this.gameRunning = false;
+        minigameRenderer.sprite = null;
         playerCrystalManager.stopMining();
     }
     
