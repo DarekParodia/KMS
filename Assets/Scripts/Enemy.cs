@@ -10,6 +10,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float maxDistance = 40.0f;
     [SerializeField] private float maxHP = 100.0f;
     [SerializeField] private float currentHP = 100.0f;
+    [SerializeField] private GameObject shardPrefab;
+    [SerializeField] private AnimationClip[] movementAnimations;
     
     private float timeFactor = 1.0f;
     
@@ -34,7 +36,11 @@ public class Enemy : MonoBehaviour
         // gradually change color to red
         spriteRenderer.color = Color.Lerp(Color.white, Color.red, 1 - (currentHP / maxHP));
         if(this.currentHP <= 0)
-        {
+        {   
+            if ( UnityEngine.Random.Range(0f, 1f) <= 0.1f)
+            {
+                SpawnShard();
+            }
             Destroy(gameObject);
         }
         if (isFrozen) return;
@@ -49,6 +55,11 @@ public class Enemy : MonoBehaviour
         {
             this.transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed *Time.deltaTime * timeFactor);
         }
+    }
+    
+    private void SpawnShard()
+    {
+        Instantiate(shardPrefab, transform.position, Quaternion.identity);
     }
 
     private GameObject getClosestPlayer()
