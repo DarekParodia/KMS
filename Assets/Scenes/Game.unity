@@ -506,11 +506,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3031320174272134335, guid: 7da66d7bf1d974346b48f508d72dff12, type: 3}
       propertyPath: m_DefaultControlScheme
-      value: 
+      value: Gamepad
       objectReference: {fileID: 0}
     - target: {fileID: 3031320174272134335, guid: 7da66d7bf1d974346b48f508d72dff12, type: 3}
       propertyPath: m_NeverAutoSwitchControlSchemes
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5888047852711482731, guid: 7da66d7bf1d974346b48f508d72dff12, type: 3}
       propertyPath: m_Name
@@ -518,7 +518,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9083997891203714363, guid: 7da66d7bf1d974346b48f508d72dff12, type: 3}
       propertyPath: isGamepad
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -697,11 +697,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3031320174272134335, guid: 7da66d7bf1d974346b48f508d72dff12, type: 3}
       propertyPath: m_DefaultControlScheme
-      value: 
+      value: Keyboard&Mouse
       objectReference: {fileID: 0}
     - target: {fileID: 3031320174272134335, guid: 7da66d7bf1d974346b48f508d72dff12, type: 3}
       propertyPath: m_NeverAutoSwitchControlSchemes
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5888047852711482731, guid: 7da66d7bf1d974346b48f508d72dff12, type: 3}
       propertyPath: m_Name
@@ -709,7 +709,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9083997891203714363, guid: 7da66d7bf1d974346b48f508d72dff12, type: 3}
       propertyPath: isGamepad
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

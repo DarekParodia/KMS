@@ -19,9 +19,11 @@ public class Player : MonoBehaviour
     
     PlayerInput playerInput;
     private Vector2 look;
+    private playerCrystalManager pcm;
     void Start()
     {
         this.playerInput = GetComponent<PlayerInput>();
+        this.pcm = GetComponent<playerCrystalManager>();
     }
 
     // Update is called once per frame
@@ -43,6 +45,15 @@ public class Player : MonoBehaviour
              Quaternion targetRotation = Quaternion.Euler(0, 0, Mathf.Atan2(mousePos.y - transform.position.y, mousePos.x - transform.position.x) * Mathf.Rad2Deg);
                 gun.transform.rotation = Quaternion.Lerp(gun.transform.rotation, targetRotation, gunSmoothness * Time.deltaTime);
          }
+
+         if (pcm.isMiningNow())
+         {
+             this.gun.SetActive(false);
+         }
+            else
+            {
+                this.gun.SetActive(true);
+            }
      }
 
     
@@ -66,8 +77,8 @@ public class Player : MonoBehaviour
              // Create bullet at the position of the first child of the gun plus the offset
              GameObject bullet = Instantiate(bulletPrefab, factGun.position, factGun.rotation);
              bullet.GetComponent<Rigidbody2D>().velocity = gun.transform.right * bulletVelo;
-             // bullet.GetComponent<Bullet>().bulletKnockbackFactor = bulletKnockbackFactor;
-             // bullet.GetComponent<Bullet>().bulletVelo = bulletVelo;
+             bullet.GetComponent<Bullet>().bulletKnockbackFactor = bulletKnockbackFactor;
+             bullet.GetComponent<Bullet>().bulletVelo = bulletVelo;
              Destroy(bullet, bulletTTL);
          }
      }

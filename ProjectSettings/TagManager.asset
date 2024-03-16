@@ -43,18 +43,21 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Bullets
-    uniqueID: 1550033193
-    locked: 0
-  - name: Player
-    uniqueID: 1378138541
-    locked: 0
-  - name: Enemy
-    uniqueID: 2231216575
+  - name: Map
+    uniqueID: 2600747515
     locked: 0
   - name: Objects
     uniqueID: 3877496831
     locked: 0
-  - name: Map
-    uniqueID: 2600747515
+  - name: Enemy
+    uniqueID: 2231216575
+    locked: 0
+  - name: Player
+    uniqueID: 1378138541
+    locked: 0
+  - name: Bullets
+    uniqueID: 1550033193
+    locked: 0
+  - name: UI
+    uniqueID: 779643027
     locked: 0

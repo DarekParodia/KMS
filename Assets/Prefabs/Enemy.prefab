@@ -97,9 +97,9 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 1.02
-  m_AngularDrag: 0.05
+  m_Mass: 8.48
+  m_LinearDrag: 2.79
+  m_AngularDrag: 2.77
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -110,8 +110,8 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!1 &9066435134965214033
 GameObject:
   m_ObjectHideFlags: 0

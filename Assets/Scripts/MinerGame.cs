@@ -9,6 +9,7 @@ public class MinerGame : MonoBehaviour
     [SerializeField] private GameObject minigameRendererObject;
     [SerializeField] private List<Sprite> keyboardPrompts;
     [SerializeField] private List<Sprite> gamepadPrompts;
+    [SerializeField] private List<Sprite> completionSprites;
     [SerializeField] private int promptCount = 8;
     
     private SpriteRenderer minigameRenderer;

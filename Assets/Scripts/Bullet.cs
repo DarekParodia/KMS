@@ -30,7 +30,7 @@ public class Bullet : MonoBehaviour
             Rigidbody2D enemyRigidbody = collision.gameObject.GetComponent<Rigidbody2D>();
 
             // Calculate the force to be applied
-            Vector2 force = transform.right * bulletVelo * bulletKnockbackFactor;
+            Vector2 force = transform.right * bulletVelo * bulletKnockbackFactor / 100;
 
             // Apply the force to the enemy
             enemyRigidbody.AddForce(force);

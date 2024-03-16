@@ -121,7 +121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletTTL: 2
   bulletVelo: 8
-  bulletKnockbackFactor: 1
+  bulletKnockbackFactor: 0.02
 --- !u!1 &7075548367289205387
 GameObject:
   m_ObjectHideFlags: 0
