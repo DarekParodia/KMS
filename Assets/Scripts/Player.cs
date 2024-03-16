@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float bulletKnockbackFactor = 1.0f;
     [SerializeField] private float gunSmoothness = 15.0f;
     [SerializeField] private bool isGamepad = false;
+    [SerializeField] private GameObject klepsydra;
     
     PlayerInput playerInput;
     private Vector2 look;
@@ -93,5 +94,13 @@ public class Player : MonoBehaviour
      public bool isGamepadControl()
      {
          return this.isGamepad;
+     }
+     void OnUlt(InputValue value)
+     {
+        this.klepsydra.GetComponent<Klepsa>().ultuj();
+     }
+     void OnUnInteract(InputValue value)
+     {
+         this.klepsydra.GetComponent<Klepsa>().add();
      }
 }   

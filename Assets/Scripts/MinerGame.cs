@@ -45,7 +45,6 @@ public class MinerGame : MonoBehaviour
 
     public void abortGame()
     {
-        Debug.Log("the end");
         this.gameRunning = false;
         minigameRenderer.sprite = null;
         backgroundRenderer.sprite = null;
@@ -54,7 +53,6 @@ public class MinerGame : MonoBehaviour
     
     public void endGame()
     {
-        Debug.Log("the end");
         this.gameRunning = false;
         minigameRenderer.sprite = null;
         backgroundRenderer.sprite = null;
@@ -71,7 +69,6 @@ public class MinerGame : MonoBehaviour
         }
         this.currentPrompt = randomizePrompt();
         this.currentPromptCount++;
-        Debug.Log($"Generated prompt: {this.currentPrompt}, Is Gamepad: {isGamepad}");
         if (this.isGamepad)
         {
             this.minigameRenderer.sprite = gamepadPrompts[this.currentPrompt];
