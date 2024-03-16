@@ -17,7 +17,8 @@ public class Crystal : MonoBehaviour
     }
     public void mine(GameObject player)
     {
-        Debug.Log("Mined");
+        Debug.Log("Mined"); 
+        player.GetComponent<Player>().submitKlepsydra();
         Destroy(gameObject);
     }
     public bool isMined()

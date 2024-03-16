@@ -499,6 +499,7 @@ GameObject:
   - component: {fileID: 9083997891203714363}
   - component: {fileID: 3429796679694456610}
   - component: {fileID: 963480321824990181}
+  - component: {fileID: 3864829543817071091}
   - component: {fileID: 3031320174272134335}
   m_Layer: 0
   m_Name: Player
@@ -591,6 +592,9 @@ MonoBehaviour:
   bulletKnockbackFactor: 0.05
   gunSmoothness: 15
   isGamepad: 0
+  klepsydra: {fileID: 0}
+  timer: {fileID: 0}
+  circle: {fileID: 5341766686173254570, guid: 6df56c514ec90c2cbbae9eeb13560c47, type: 3}
 --- !u!114 &3429796679694456610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -645,6 +649,19 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2121cf5e3d0d6ca4fbc3ef9092d2fcb2, type: 3}
   promptCount: 9
   currentPromptCount: 0
+--- !u!114 &3864829543817071091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5888047852711482731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e43d0a8a9940a03ed909222ae9b2c8b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slowTimeCirclePrefab: {fileID: 5341766686173254570, guid: 6df56c514ec90c2cbbae9eeb13560c47, type: 3}
 --- !u!114 &3031320174272134335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -857,6 +874,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 1431235905748163599}
+  rawImage: {fileID: 0}
   gamepadSprite: {fileID: 21300000, guid: d8a2166a5f5c740429e7149b8af0be1d, type: 3}
   keyboardSprite: {fileID: 21300000, guid: a9cc71673089cc445ba401b4af57247d, type: 3}
   player: {fileID: 9083997891203714363}

@@ -17,14 +17,18 @@ public class Player : MonoBehaviour
     [SerializeField] private float gunSmoothness = 15.0f;
     [SerializeField] private bool isGamepad = false;
     [SerializeField] private GameObject klepsydra;
+    [SerializeField] private Timer timer;
+    [SerializeField] private GameObject circle;
     
     PlayerInput playerInput;
     private Vector2 look;
     private playerCrystalManager pcm;
+    private Klepsa klepsa;
     void Start()
     {
         this.playerInput = GetComponent<PlayerInput>();
         this.pcm = GetComponent<playerCrystalManager>();
+        this.klepsa = this.klepsydra.GetComponent<Klepsa>();
     }
 
     // Update is called once per frame
@@ -97,10 +101,22 @@ public class Player : MonoBehaviour
      }
      void OnUlt(InputValue value)
      {
-        this.klepsydra.GetComponent<Klepsa>().ultuj();
+        this.klepsa.ultuj(this);
      }
      void OnUnInteract(InputValue value)
      {
-         this.klepsydra.GetComponent<Klepsa>().add();
+         this.klepsa.add();
+     }
+
+     public void submitKlepsydra()
+     {
+         this.klepsa.add();
+         this.timer.addTime();
+     }
+
+     public void skillujLuja()
+     {
+         GameObject newCircle = Instantiate(circle, transform.position, Quaternion.identity);
+         newCircle.transform.position = transform.position;
      }
 }   

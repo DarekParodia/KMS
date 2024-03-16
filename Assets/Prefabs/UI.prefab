@@ -576,6 +576,7 @@ GameObject:
   - component: {fileID: 133199219700845277}
   - component: {fileID: 7721424036632758622}
   - component: {fileID: 1659070140265330079}
+  - component: {fileID: 4552949457977621583}
   m_Layer: 5
   m_Name: Klepsa
   m_TagString: Untagged
@@ -657,7 +658,21 @@ MonoBehaviour:
   - {fileID: 21300000, guid: eb33a87ff0ee37a4181c31a7a3cf726e, type: 3}
   - {fileID: 21300000, guid: 2377303e23760084eaf6a237b88cdea6, type: 3}
   inputHelper: {fileID: 6179063521555402473}
+  circle: {fileID: 5341766686173254570, guid: 6df56c514ec90c2cbbae9eeb13560c47, type: 3}
   current: 0
+--- !u!114 &4552949457977621583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7087712182018376593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e43d0a8a9940a03ed909222ae9b2c8b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slowTimeCirclePrefab: {fileID: 5341766686173254570, guid: 6df56c514ec90c2cbbae9eeb13560c47, type: 3}
 --- !u!1 &7289676661264372882
 GameObject:
   m_ObjectHideFlags: 0
@@ -670,6 +685,7 @@ GameObject:
   - component: {fileID: 3078431333368902653}
   - component: {fileID: 4124271577581412605}
   - component: {fileID: 2233897617458214914}
+  - component: {fileID: 5590434794634467588}
   m_Layer: 5
   m_Name: Klepsa
   m_TagString: Untagged
@@ -751,7 +767,21 @@ MonoBehaviour:
   - {fileID: 21300000, guid: eb33a87ff0ee37a4181c31a7a3cf726e, type: 3}
   - {fileID: 21300000, guid: 2377303e23760084eaf6a237b88cdea6, type: 3}
   inputHelper: {fileID: 9145272709500417402}
+  circle: {fileID: 5341766686173254570, guid: 6df56c514ec90c2cbbae9eeb13560c47, type: 3}
   current: 0
+--- !u!114 &5590434794634467588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7289676661264372882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e43d0a8a9940a03ed909222ae9b2c8b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slowTimeCirclePrefab: {fileID: 5341766686173254570, guid: 6df56c514ec90c2cbbae9eeb13560c47, type: 3}
 --- !u!1 &7456067478072304853
 GameObject:
   m_ObjectHideFlags: 0

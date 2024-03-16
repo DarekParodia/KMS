@@ -43,18 +43,21 @@ public class Klepsa : MonoBehaviour
         }
     }
 
-    public void ultuj()
+    public void ultuj(Player player)
     {
         if (current >= max)
         {
-            this.fullEvent();
+            this.fullEvent(player);
             current = 0;
         }
     }
     
 
-    void fullEvent()
+    void fullEvent(Player p)
     {
+        Debug.Log("event");
+        p.skillujLuja();
+        // create a child object of circle
         
     }
     
